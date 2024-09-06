@@ -1,48 +1,78 @@
+/* General styles for both pages */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 0;
+    padding: 20px;
     background-color: #f4f4f4;
-    color: #333;
 }
 
-h1 {
-    text-align: center;
+/* Responsive container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
+/* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
+    margin-bottom: 20px;
 }
 
-table th, table td {
-    padding: 12px;
+table, th, td {
     border: 1px solid #ddd;
 }
 
-table th {
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
     background-color: #f2f2f2;
 }
 
-
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 20px 0;
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
+/* Graph styles */
+canvas {
+    max-width: 100%;
+    height: auto !important;
 }
 
-.button:hover {
+/* Button styles */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
     background-color: #0056b3;
 }
 
-canvas {
-    max-width: 100%;
-    margin: 20px 0;
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        margin: 0 10px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
 }
