@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     scales: {
                         y1: {
                             stacked: true,
-                            display: false, // Hide the left y-axis
+                            display: true, // Hide the left y-axis
                             title: {
                                 display: true,
                                 text: 'Coste estimado (€)'
