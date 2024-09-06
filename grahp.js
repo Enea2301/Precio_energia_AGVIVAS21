@@ -9,68 +9,47 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function renderGraph(data) {
-    const labels = data.map(row => row['Año-Mes']);
-    const precioOMIE = data.map(row => parseFloat(row['Precio OMIE']) || 0);
-    const costeEstimado = data.map(row => parseFloat(row['Coste estimado (€)']) || 0);
-    const costeEstimadoConIVA = data.map(row => parseFloat(row['Coste estimado con IVA (€)']) || 0);
+function createChart(data) {
+    const labels = [];
+    const prices = [];
 
-    const ctx = document.getElementById('energyGraph').getContext('2d');
-    const energyGraph = new Chart(ctx, {
-        type: 'bar',
+    data.forEach(row => {
+        if (row['Precio OMIE']) { // Filter out rows with NaN prices
+            labels.push(row['Year-Month']);
+            prices.push(parseFloat(row['Precio OMIE'].replace(',', '.')));
+        }
+    });
+
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
         data: {
             labels: labels,
-            datasets: [
-                {
-                    label: 'Coste estimado con IVA (€)',
-                    data: costeEstimadoConIVA,
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1,
-                    stack: 'Stack 0'
-                },
-                {
-                    label: 'Coste estimado (€)',
-                    data: costeEstimado,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1,
-                    stack: 'Stack 1'
-                },
-                {
-                    label: 'Precio OMIE (€)',
-                    data: precioOMIE,
-                    type: 'line',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    yAxisID: 'y2'
-                }
-            ]
+            datasets: [{
+                label: 'Precio OMIE (€)',
+                data: prices,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true,
+                tension: 0.1,
+            }]
         },
         options: {
+            responsive: true,
             scales: {
-                y1: {
-                    stacked: true,
+                x: {
                     title: {
                         display: true,
-                        text: 'Coste estimado (€)'
+                        text: 'Month-Year'
                     }
                 },
-                y2: {
-                    type: 'linear',
-                    position: 'right',
-                    ticks: {
-                        beginAtZero: true
-                    },
+                y: {
                     title: {
                         display: true,
-                        text: 'Precio OMIE (€)'
-                    },
-                    grid: {
-                        drawOnChartArea: false
+                        text: 'Price (€)'
                     }
                 }
             }
         }
     });
-}
+} 
