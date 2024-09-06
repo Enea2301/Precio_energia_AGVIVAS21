@@ -85,16 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     scales: {
                         y1: {
                             stacked: true,
-                            display: true, // Hide the left y-axis
                             title: {
                                 display: true,
                                 text: 'Coste estimado (€)'
-                            },
-                            ticks: {
-                                display: false // Hide ticks on the left y-axis
-                            },
-                            grid: {
-                                display: false // Hide grid lines for the left y-axis
                             }
                         },
                         y2: {
