@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const labels = data.map(row => row['Año-Mes']);
             const precioOMIE = data.map(row => parseFloat(row['Precio OMIE']) || 0);
             const costeEstimado = data.map(row => parseFloat(row['Coste estimado (€)']) || 0);
+            const costeEstimadoConIVA = data.map(row => parseFloat(row['Coste estimado con IVA (€)']) || 0);
 
             const ctx = document.getElementById('energyGraph').getContext('2d');
             const energyGraph = new Chart(ctx, {
@@ -55,12 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     labels: labels,
                     datasets: [
                         {
+                            label: 'Coste estimado con IVA (€)',
+                            data: costeEstimadoConIVA,
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1,
+                            stack: 'Stack 0'
+                        },
+                        {
                             label: 'Coste estimado (€)',
                             data: costeEstimado,
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1,
-                            yAxisID: 'y1'
+                            stack: 'Stack 1'
                         },
                         {
                             label: 'Precio OMIE (€)',
@@ -93,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             },
                             title: {
                                 display: true,
-                                text: 'Precio OMIE (€)'
+                                text: 'Precio OMIE (€/kWh)'
                             },
                             grid: {
                                 drawOnChartArea: false
