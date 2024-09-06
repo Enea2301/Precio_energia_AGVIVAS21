@@ -25,3 +25,24 @@ table th, table td {
 table th {
     background-color: #f2f2f2;
 }
+
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+canvas {
+    max-width: 100%;
+    margin: 20px 0;
+}
