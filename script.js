@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1,
-                            stack: 'Stack 1'
+                            stack: 'Stack 0'
                         },
                         {
                             label: 'Precio OMIE (€)',
@@ -84,11 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 options: {
                     scales: {
                         y1: {
-                            type: 'linear',
-                            position: 'left',
-                            ticks: {
-                                beginAtZero: true
-                            },
+                            stacked: true,
                             title: {
                                 display: true,
                                 text: 'Coste estimado (€)'
@@ -102,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             },
                             title: {
                                 display: true,
-                                text: 'Precio OMIE (€/kWh)'
+                                text: 'Precio OMIE (€)'
                             },
                             grid: {
                                 drawOnChartArea: false
