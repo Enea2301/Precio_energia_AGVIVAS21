@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla precios OMIE-Coste estimado</title>
+    <title>Energy Data Viewer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Tabla precios OMIE-Coste estimado</h2>
-        <div id="tableContainer"></div>
-        <!-- Add button to navigate to the graph page -->
-        <button onclick="window.location.href='graph.html'">Gráfica interactiva</button>
+    <h1>Energy Data Viewer</h1>
+    <div id="data-table">
+        <!-- Table will be inserted here -->
     </div>
+    <a href="graph.html" class="button">Gráfica interactiva</a>
+
+    <!-- Include PapaParse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="script.js"></script>
 </body>
